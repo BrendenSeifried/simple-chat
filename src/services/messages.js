@@ -17,6 +17,13 @@ export async function sendMessage(email, status = 0) {
 export function subscribe(onMessage = (_message) => {}) {
   // TODO: Subscribe to changes for the `messages` table
   // and call `onMessage` with the newly added row
+  const messageService = client
+    .from('messages')
+    .on('*', (payload) => {
+      console.log('Message Sent', payload);
+    })
+    .subscribe();
+  return onMessage;
 }
 
 export function unsubscribe() {
