@@ -19,11 +19,11 @@ export function subscribe(onMessage = (_message) => {}) {
   // and call `onMessage` with the newly added row
   const messageService = client
     .from('messages')
-    .on('*', (payload) => {
+    .on('INSERT', (payload) => {
       console.log('Message Sent', payload);
     })
     .subscribe();
-  return onMessage;
+  return parseData(messageService);
 }
 
 export function unsubscribe() {

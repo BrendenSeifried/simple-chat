@@ -27,8 +27,8 @@ export default function Chat() {
     getMessages()
       .then(setMessages)
       .then(subscribe)
-      .then(() => handleMessageReceived)
-      .finally(unsubscribe);
+      // .then(() => handleMessageReceived)
+      .finally(() => unsubscribe);
     // TODO: Subscribe to message changes, using handleMessageReceived
     // subscribe();
     // return function cleanup() {
