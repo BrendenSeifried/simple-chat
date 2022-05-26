@@ -21,6 +21,7 @@ export function subscribe(onMessage = (_message) => {}) {
     .from('messages')
     .on('INSERT', (payload) => {
       console.log('Message Sent', payload);
+      onMessage(payload.new);
     })
     .subscribe();
   return parseData(messageService);
